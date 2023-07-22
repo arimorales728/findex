@@ -17,7 +17,8 @@ export default {
       calendarOptions: {
         plugins: [ dayGridPlugin ],
         initialView: 'dayGridMonth',
-        events: [],
+            events: [],
+        timezone: 'UTC'
         },
       users: []
     }

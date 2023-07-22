@@ -22,3 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('users')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('users.index');
 });
+
+Route::get('/steps', function (Request $request) {
+    $steps = ['Vista de Usuarios', 'Informacion de Usuario', 'Creacion de nuevo usuario'];
+    return response()->json($steps);
+});
