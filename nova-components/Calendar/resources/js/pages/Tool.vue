@@ -33,12 +33,12 @@ export default {
     this.calendarOptions.events = []
       Nova.request().get('/api/users')
         .then(response => {
-            this.users = response.data;
-            this.users.forEach(user => {
-                this.calendarOptions.events = [{
+            this.users = response.data || [];
+            this.calendarOptions.events =  this.users.map(user => {
+                return {
                     title: user.name,
                     start: user.created_at,
-                }];
+                };
             });
         })
         .catch(error => {

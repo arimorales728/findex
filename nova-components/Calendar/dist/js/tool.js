@@ -43,12 +43,12 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
       this.calendarOptions.events = [];
       Nova.request().get('/api/users').then(function (response) {
-        _this.users = response.data;
-        _this.users.forEach(function (user) {
-          _this.calendarOptions.events = [{
+        _this.users = response.data || [];
+        _this.calendarOptions.events = _this.users.map(function (user) {
+          return {
             title: user.name,
             start: user.created_at
-          }];
+          };
         });
       })["catch"](function (error) {
         console.error(error);
